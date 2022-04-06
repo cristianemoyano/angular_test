@@ -5,7 +5,6 @@ import { SimulacionService } from './providers/simulacion.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PlazoFijoComponent } from './components/plazo-fijo/plazo-fijo.component';
 
 @NgModule({
   declarations: [
