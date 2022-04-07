@@ -10,22 +10,22 @@ import { SimulacionService } from 'src/app/providers/simulacion.service';
 export class PlazoFijoComponent implements OnInit {
   dias = 30;
   capital = 1000;
-  resultado: string;
+  resultado: number;
   simulacion: Simulacion;
   tasa = 41;
 
   constructor(public simuladores: SimulacionService) { 
-    this.resultado = simuladores.prueba();
-    this.simulacion = new Simulacion(1000, 30, 41);
+    this.simulacion = new Simulacion(this.dias, this.capital, this.tasa);
     this.simulacion.calcularInteres();
+    this.resultado = 0;
   }
 
   ngOnInit(): void {
   }
 
   calcularInteres(){
-    this.simulacion = new Simulacion(1000, 30, this.tasa);
-    this.simulacion.calcularInteres();
+    this.simulacion = new Simulacion(this.dias, this.capital, this.tasa);
+    this.resultado = this.simulacion.calcularInteres();
     
   }
 

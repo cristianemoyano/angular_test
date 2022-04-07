@@ -1,2 +1,5 @@
-<p>Capital: {{ capital }}</p>
-<button {click}='incrCap(1000)'>+</button>
+<p>Capital: {{ capital }} <button (click)='incrCap(1000)'>+</button></p>
+<p>Dias: {{ dias }} <button (click)='incrDias(1)'>+</button></p>
+
+<p>Resultado: {{ resultado }}</p>
+<p>Simulación: {{ simulacion | json }}</p>
