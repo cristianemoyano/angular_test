@@ -13,30 +13,66 @@ export class PlazoFijoComponent implements OnInit {
   resultado: number;
   simulacion: Simulacion;
   tasa = 41;
+  minDias = 1;
+  maxDias = 120;
+  minCapital = 1000;
+  maxCapital = 100000;
+  errorCapital = '';
+  errorDias = '';
 
-  constructor(public simuladores: SimulacionService) { 
+  constructor(public simuladores: SimulacionService) {
     this.simulacion = new Simulacion(this.dias, this.capital, this.tasa);
-    this.simulacion.calcularInteres();
-    this.resultado = 0;
+    this.resultado = this.simulacion.calcularInteres();;
   }
 
   ngOnInit(): void {
   }
 
-  calcularInteres(){
+  calcularInteres() {
     this.simulacion = new Simulacion(this.dias, this.capital, this.tasa);
     this.resultado = this.simulacion.calcularInteres();
-    
+
   }
 
   incrCap(incr: number) {
-    this.capital += incr;
-    this.calcularInteres()
+    if (this.capital < this.maxCapital) {
+      this.capital += incr;
+      this.calcularInteres()
+      this.errorCapital = '';
+    } else {
+      this.errorCapital = 'Máximo alcanzado.';
+    }
   }
 
   incrDias(incr: number) {
-    this.dias += incr;
-    this.calcularInteres()
+    if (this.dias < this.maxDias) {
+      this.dias += incr;
+      this.calcularInteres();
+      this.errorDias = '';
+    } else {
+      this.errorDias = 'Máximo alcanzado.';
+    }
+
+  }
+
+  decrCap(incr: number) {
+    if (this.capital > this.minCapital) {
+      this.capital -= incr;
+      this.calcularInteres();
+      this.errorCapital = '';
+    } else {
+      this.errorCapital = 'Mínimo alcanzado.';
+    }
+  }
+
+  decrDias(incr: number) {
+    if (this.dias > this.minDias) {
+      this.dias -= incr;
+      this.calcularInteres();
+      this.errorDias = '';
+    } else {
+      this.errorDias = 'Mínimo alcanzado.';
+    }
   }
 
 }

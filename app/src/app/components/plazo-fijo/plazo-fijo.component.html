@@ -1,5 +1,31 @@
-<p>Capital: {{ capital }} <button (click)='incrCap(1000)'>+</button></p>
-<p>Dias: {{ dias }} <button (click)='incrDias(1)'>+</button></p>
 
-<p>Resultado: {{ resultado }}</p>
-<p>Simulación: {{ simulacion | json }}</p>
+<form>
+    <label for="capital" class="form-label">Capital</label>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">$</span>
+        <input id="capital" type="text" value="{{ capital }}" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+        <button class="btn btn-outline-primary" (click)='incrCap(1000)' type="button" id="button-addon2">+</button>
+        <button class="btn btn-outline-primary" (click)='decrCap(1000)' type="button" id="button-addon2">-</button>
+    </div>
+    <div id="emailHelp" class="form-text text-danger mb-3">{{ errorCapital }}</div>
+    <label for="dias" class="form-label">Dias</label>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">x</span>
+        <input id="dias" type="text" value="{{ dias }}" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+        <button class="btn btn-outline-primary" (click)='incrDias(1)' type="button" id="button-addon2">+</button>
+        <button class="btn btn-outline-primary" (click)='decrDias(1)' type="button" id="button-addon2">-</button>
+    </div>
+    <div id="emailHelp" class="form-text text-danger mb-3">{{ errorDias }}</div>
+  </form>
+
+  <h3>
+    Interés
+    <small class="text-muted">$ {{ resultado }} </small>
+  </h3>
+
+  
+  <span class="text-muted">Consola:</span>
+<div>
+    <kbd>{{ simulacion | json }}</kbd>
+</div>
+  
