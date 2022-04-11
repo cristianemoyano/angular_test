@@ -33,9 +33,12 @@ export class PlazoFijoComponent implements OnInit {
   calcularInteres() {
     this.simulacion = new Simulacion(this.dias, this.capital, this.tasa);
     this.resultado = this.simulacion.calcularInteres();
-    this.simulador.agregarSimulacion(this.simulacion)
-    this.simulaciones = this.simulador.obtenerSimulaciones();
+    this.agregarSimulacion();
+  }
 
+  public agregarSimulacion() {
+    this.simulador.agregarSimulacion(this.simulacion);
+    this.simulaciones = this.simulador.obtenerSimulaciones();
   }
 
   incrCap(incr: number) {
