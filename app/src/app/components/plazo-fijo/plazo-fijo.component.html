@@ -1,9 +1,9 @@
-
 <form>
     <label for="capital" class="form-label">Capital</label>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">$</span>
-        <input id="capital" type="text" value="{{ capital }}" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+        <input id="capital" type="text" value="{{ capital }}" class="form-control" placeholder="Recipient's username"
+            aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
         <button class="btn btn-outline-primary" (click)='incrCap(1000)' type="button" id="button-addon2">+</button>
         <button class="btn btn-outline-primary" (click)='decrCap(1000)' type="button" id="button-addon2">-</button>
     </div>
@@ -11,21 +11,46 @@
     <label for="dias" class="form-label">Dias</label>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">x</span>
-        <input id="dias" type="text" value="{{ dias }}" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+        <input id="dias" type="text" value="{{ dias }}" class="form-control" placeholder="Recipient's username"
+            aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
         <button class="btn btn-outline-primary" (click)='incrDias(1)' type="button" id="button-addon2">+</button>
         <button class="btn btn-outline-primary" (click)='decrDias(1)' type="button" id="button-addon2">-</button>
     </div>
     <div id="emailHelp" class="form-text text-danger mb-3">{{ errorDias }}</div>
-  </form>
+</form>
 
-  <h3>
+<h3>
     Interés
     <small class="text-muted">$ {{ resultado }} </small>
-  </h3>
+</h3>
 
-  
-  <span class="text-muted">Consola:</span>
+
+<span class="text-muted">Consola:</span>
 <div>
     <kbd>{{ simulacion | json }}</kbd>
 </div>
-  
+
+
+<h3 class="mt-3">
+    History
+</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Dias</th>
+        <th scope="col">Capital</th>
+        <th scope="col">Tasa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let item of simulaciones; let i = index">
+        <th scope="row">{{ i }}</th>
+        <td>{{item.dias }}</td>
+        <td>{{item.capital }}</td>
+        <td>{{item.tasa }}</td>
+        <td>{{item.interes }}</td>
+      </tr>
+    </tbody>
+  </table>

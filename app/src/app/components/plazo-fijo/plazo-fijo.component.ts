@@ -19,10 +19,12 @@ export class PlazoFijoComponent implements OnInit {
   maxCapital = 100000;
   errorCapital = '';
   errorDias = '';
+  simulaciones: Simulacion[];
 
-  constructor(public simuladores: SimulacionService) {
+  constructor(public simulador: SimulacionService) {
     this.simulacion = new Simulacion(this.dias, this.capital, this.tasa);
-    this.resultado = this.simulacion.calcularInteres();;
+    this.resultado = this.simulacion.calcularInteres();
+    this.simulaciones = [];
   }
 
   ngOnInit(): void {
@@ -31,6 +33,8 @@ export class PlazoFijoComponent implements OnInit {
   calcularInteres() {
     this.simulacion = new Simulacion(this.dias, this.capital, this.tasa);
     this.resultado = this.simulacion.calcularInteres();
+    this.simulador.agregarSimulacion(this.simulacion)
+    this.simulaciones = this.simulador.obtenerSimulaciones();
 
   }
 
