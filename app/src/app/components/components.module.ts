@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { PlazoFijoComponent } from "./plazo-fijo/plazo-fijo.component";
 
@@ -7,10 +8,12 @@ import { PlazoFijoComponent } from "./plazo-fijo/plazo-fijo.component";
       PlazoFijoComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule
     ],
     exports: [
-        PlazoFijoComponent
+        PlazoFijoComponent,
+        FormsModule
     ]
   })
 export class ComponentsModule { }

@@ -1,9 +1,11 @@
-<form>
+
+<form [formGroup]="simulacionForm" >
+  <p>Form Status: {{ simulacionForm.status }}</p>
     <label for="capital" class="form-label">Capital</label>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">$</span>
         <input id="capital" type="text" value="{{ capital }}" class="form-control" placeholder="Recipient's username"
-            aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+            aria-label="Recipient's username" aria-describedby="button-addon2" formControlName="capital">
         <button class="btn btn-outline-primary" (click)='incrCap(1000)' type="button" id="button-addon2">+</button>
         <button class="btn btn-outline-primary" (click)='decrCap(1000)' type="button" id="button-addon2">-</button>
     </div>
@@ -12,7 +14,7 @@
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">x</span>
         <input id="dias" type="text" value="{{ dias }}" class="form-control" placeholder="Recipient's username"
-            aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+            aria-label="Recipient's username" aria-describedby="button-addon2" formControlName="dias">
         <button class="btn btn-outline-primary" (click)='incrDias(1)' type="button" id="button-addon2">+</button>
         <button class="btn btn-outline-primary" (click)='decrDias(1)' type="button" id="button-addon2">-</button>
     </div>

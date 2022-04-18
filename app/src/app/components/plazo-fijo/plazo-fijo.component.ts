@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+
 import { Simulacion } from 'src/app/models/simulacion.model';
 import { SimulacionService } from 'src/app/providers/simulacion.service';
 
@@ -20,14 +22,23 @@ export class PlazoFijoComponent implements OnInit {
   errorCapital = '';
   errorDias = '';
   simulaciones: Simulacion[];
+  simulacionForm: FormGroup;
 
-  constructor(public simulador: SimulacionService) {
+  constructor(public simulador: SimulacionService, private fb: FormBuilder) {
     this.simulacion = new Simulacion(this.dias, this.capital, this.tasa);
     this.resultado = this.simulacion.calcularInteres();
     this.simulaciones = [];
+    this.simulacionForm = this.crearFormulario();
   }
 
   ngOnInit(): void {
+  }
+
+  crearFormulario(): FormGroup{
+    return this.fb.group({
+      dias: [this.dias,[Validators.required, Validators.min(30)]],
+      capital: [this.capital, [Validators.required, Validators.min(1000)]]
+    });
   }
 
   calcularInteres() {
