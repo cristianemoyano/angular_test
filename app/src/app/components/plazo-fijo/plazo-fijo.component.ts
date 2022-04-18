@@ -29,6 +29,7 @@ export class PlazoFijoComponent implements OnInit {
     this.resultado = this.simulacion.calcularInteres();
     this.simulaciones = [];
     this.simulacionForm = this.crearFormulario();
+    this.setForm();
   }
 
   ngOnInit(): void {
@@ -36,8 +37,8 @@ export class PlazoFijoComponent implements OnInit {
 
   crearFormulario(): FormGroup{
     return this.fb.group({
-      dias: [this.dias,[Validators.required, Validators.min(30)]],
-      capital: [this.capital, [Validators.required, Validators.min(1000)]]
+      dias: ['',[Validators.required, Validators.min(30)]],
+      capital: ['', [Validators.required, Validators.min(1000)]]
     });
   }
 
@@ -82,6 +83,16 @@ export class PlazoFijoComponent implements OnInit {
       this.errorCapital = 'Mínimo alcanzado.';
     }
   }
+
+  setForm(){
+    this.simulacionForm.controls['dias'].setValue(this.dias);
+    this.simulacionForm.controls['capital'].setValue(this.capital);
+  }
+
+  marcarFormulario(){
+    this.simulacionForm.controls['capital'].markAsTouched();
+    this.simulacionForm.controls['dias'].markAsTouched();
+  } 
 
   decrDias(incr: number) {
     if (this.dias > this.minDias) {
