@@ -8,6 +8,10 @@ import { SimulacionService } from './providers/simulacion.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from 'src/environments/environment'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +20,9 @@ import { AppComponent } from './app.component';
     BrowserModule,
     ComponentsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig), 
   ],
   providers: [SimulacionService],
   bootstrap: [AppComponent]
