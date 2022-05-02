@@ -22,6 +22,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireDatabaseModule,
+    // Cambiar las variables firebaseConfig para que funcione
     AngularFireModule.initializeApp(environment.firebaseConfig), 
   ],
   providers: [SimulacionService],
